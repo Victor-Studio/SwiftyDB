@@ -5,25 +5,23 @@ There are many libraries out there that aims to help developers easily create an
 Unfortunately developers still have to get bogged down in simple tasks such as writing table definitions 
 and SQL queries. SwiftyDB is driven by models. e.g. You use models to `insert`, `update`, `delete` and `select` the data you want in the SwiftyDB.
 
-[![Version](https://img.shields.io/cocoapods/v/SwiftyDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyDB)
-[![License](https://img.shields.io/cocoapods/l/SwiftyDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyDB)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftyDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyDB)
+[![Version](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/izouxv/SwiftyDB)
+[![Download](https://img.shields.io/cocoapods/dt/AFNetworking.svg)](https://github.com/izouxv/SwiftyDB)
+[![License](https://img.shields.io/cocoapods/l/SwiftyDB.svg?style=flat)](https://github.com/izouxv/SwiftyDB)
+[![Platform](https://img.shields.io/cocoapods/p/SwiftyDB.svg?style=flat)](https://github.com/izouxv/SwiftyDB)
 
 
-**Content**<br />
-[Features](#features)<br />
-[Usage](#usage)<br />
-&emsp; [Access the database](#accessTheDatabase)<br />
-&emsp;&emsp; [Synchronous access](#syncAccess)<br />
-&emsp;&emsp; [Aynchronous access](#asyncAccess)<br />
-&emsp; [Result format](#resultFormat)<br />
-&emsp; [Filter results](#filterResults)<br />
-&emsp; [Defining your classes](#definingYourClasses)<br />
-&emsp;&emsp; [Primary keys](#primaryKeys)<br />
-&emsp;&emsp; [Ignoring properties](#ignoringProperties)<br />
-&emsp; [How to retrieve objects](#howToRetrieveObjects)<br />
-[Installation](#installation)<br />
-[License](#license)
+## How to get started?
+[Here](https://github.com/izouxv/SwiftyDB/tree/master/SwiftyDB) is the full source code that you have to download and drag it to your project.
+
+## Installation
+SwiftyDB is available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your Cartfile:
+
+```ruby
+github "izouxv/SwiftyDB" "master"
+```
+
 
 ### <a name="features">Features</a>
 - [x] Creates and updates databases, tables, and records automatically
@@ -34,23 +32,27 @@ and SQL queries. SwiftyDB is driven by models. e.g. You use models to `insert`, 
 - [x] 100% documented
 - [x] Complex filtering
 - [x] Store collections
-- [ ] Store nested objects
-- [ ] Automated migration
-- [ ] Custom indices
+- [x] Automated migration
+- [x] Custom indices
 
-## <a name="usage">Usage</a>
+## Usage
 
 Almost pure plug and play. All you have to do is create an instance of SwiftyDB, and everything will be handled automagically behind the scenes 🎩
 
-### <a name="accessTheDatabase">Access the database</a>
+### Access the database
 
 Tell SwiftyDB what you want to call your database, and you are ready to go. If a database with the provided name does not exist, it will be created.
 
 ```Swift
-let database = SwiftyDB(databaseName: "dogtopia")
+     let database = SwiftyDb_Init(databaseName: databaseName)
+     try! database.open()
 ```
 
-#### <a name="syncAccess">Synchronous access</a>
+#### Delete a database
+```
+delDBfile(databaseName)
+return SwiftXDb(databaseName: databaseName)
+```
 
 ##### <a name="syncAddOrUpdate">Add or update a record</a>
 ```Swift
@@ -91,8 +93,6 @@ database.objectsFor(Dog.self, matchingFilters: ["id": 1])
 database.deleteObjectsForType(Dog.self)
 database.deleteObjectsForType(Dog.self, matchingFilters: ["name": "Max"])
 ```
-
-#### <a name="asyncAccess">Asynchronous access</a>
 
 ##### <a name="asyncAddOrUpdate">Add or update a record</a>
 ```Swift
@@ -158,8 +158,6 @@ let filter = Filter.equal("name", value: "Ghost")
 
 database.objectsFor(Dog.self, matchingFilters: filter)
 ```
-
-See all available filters in the [documentation](http://oyvindkg.github.io/swiftydb/docs/Classes/Filter.html).
 
 > It is not possible to filter results using the content of stored collections as these are stored as blobs in the database
 
@@ -306,21 +304,6 @@ class Dog: NSObject, Storable {
 }
 ```
 
-## <a name="installation">Installation</a>
-
-SwiftyDB is available through [Carthage](https://github.com/Carthage/Carthage). To install
-it, simply add the following line to your Cartfile:
-
-```ruby
-github "izouxv/SwiftyDB" "master"
-```
-
-
-
-## Author
-
-Øyvind Grimnes, oyvindkg@yahoo.com
-
-## <a name="License">License</a>
+## License
 
 SwiftyDB is available under the MIT license. See the LICENSE file for more info.
