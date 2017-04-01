@@ -6,7 +6,6 @@ Unfortunately developers still have to get bogged down in simple tasks such as w
 and SQL queries. SwiftyDB is driven by models. e.g. You use models to `insert`, `update`, `delete` and `select` the data you want in the SwiftyDB.
 
 [![Version](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/izouxv/SwiftyDB)
-[![Download](https://img.shields.io/cocoapods/dt/AFNetworking.svg)](https://github.com/izouxv/SwiftyDB)
 [![License](https://img.shields.io/cocoapods/l/SwiftyDB.svg?style=flat)](https://github.com/izouxv/SwiftyDB)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftyDB.svg?style=flat)](https://github.com/izouxv/SwiftyDB)
 
